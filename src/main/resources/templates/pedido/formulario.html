@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:insert="~{base :: head}"></head>
+<body>
+<div th:insert="~{base :: logo}"></div>
+<div class="container mb-0">
+    <div th:insert="~{base :: titulo('Novo Pedido')}"></div>
+    <div class="card mt-3">
+        <form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
+            <div class="form-group">
+                <label for="nomeProduto">Produto</label>
+                <input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" type="text"
+                       placeholder="Nome do produto">
+                <small>Informar qual o nome do produto.</small>
+                <div th:errors="*{nomeProduto}" class="invalid-feedback">
+                    Erros do nome do produto
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="urlProduto">URL</label>
+                <input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" type="text"
+                       placeholder="URL do produto">
+                <small>Procure em um site o produto que voce deseja e cole o URL da pagina aqui.</small>
+                <div th:errors="*{urlProduto}" class="invalid-feedback">
+                    Erros da URL do produto
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="urlImagem">Imagem</label>
+                <input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" type="text"
+                       placeholder="URL da imagem">
+                <small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores.</small>
+                <div th:errors="*{urlImagem}" class="invalid-feedback">
+                    Erros da URL da imagem
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="descricao">Descricao</label>
+                <textarea th:field="*{descricao}" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
